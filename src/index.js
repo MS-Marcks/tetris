@@ -411,7 +411,8 @@ const server = net.createServer(async (socket) => {
     });
 
     socket.on('error', (err) => {
-        console.error('Error de conexión:', err);
+        console.log(process.env.PORT);
+        //console.error('Error de conexión:', err);
     });
 });
 
