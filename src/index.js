@@ -366,13 +366,13 @@ async function jugar() {
 const server = net.createServer(async (socket) => {
     console.log('Cliente conectado desde: ' + socket.remoteAddress + ':' + socket.remotePort);
 
-    const interval = setInterval(async () => {
+    /*const interval = setInterval(async () => {
         const frame = await jugar();
         socket.write('\033[2J\033[3J\033[H');
         for (let index = 0; index < frame.length; index++) {
             socket.write(frame[index]);
         }
-    }, 500);
+    }, 500);*/
 
     socket.on('data', (data) => {
         const choice = data.toString().trim();
