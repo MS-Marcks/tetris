@@ -416,7 +416,7 @@ const server = net.createServer(async (socket) => {
 });
 
 const port = process.env.PORT || 3000
-server.listen(port, () => {
+server.listen(3000, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
 
