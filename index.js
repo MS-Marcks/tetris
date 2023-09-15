@@ -1,6 +1,6 @@
 const figlet = require("figlet");
 const net = require('net');
-require("../core/colors");
+require("./core/colors");
 
 const vacio = "⬜";
 const relleno = "🔳";
@@ -374,6 +374,7 @@ const server = net.createServer(async (socket) => {
         }
     }, 500);*/
 
+    socket.write("PRUEBA");
     socket.on('data', (data) => {
         const choice = data.toString().trim();
         switch (choice) {
@@ -407,17 +408,18 @@ const server = net.createServer(async (socket) => {
 
     // Manejar eventos de cierre de conexión
     socket.on('close', () => {
-        console.log(process.env.PORT);
-        //console.log('Cliente desconectado');
+        //console.log(process.env.PORT);
+        console.log('Cliente desconectado');
     });
 
     socket.on('error', (err) => {
-        console.log(process.env.PORT);
-        //console.error('Error de conexión:', err);
+        //console.log(process.env.PORT);
+        console.error('Error de conexión:', err);
     });
 });
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
+
 server.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
