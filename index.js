@@ -424,5 +424,9 @@ server.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
 
-
+const express = require('express');
+const app = express();
+app.get('/', (req, res) => res.send('Home Page Route'));
+const portExpress = 3000;
+app.listen(poportExpressrt, () => console.log(`Server running on ${portExpress}, http://localhost:${portExpress}`));
 
