@@ -1,4 +1,4 @@
-//const figlet = require("figlet");
+/*//const figlet = require("figlet");
 const net = require('net');
 require("./core/colors");
 
@@ -254,11 +254,11 @@ function ObtenerPuntos() {
 }
 
 function cabezera() {
-    return ""; /*blue(figlet.textSync("TETRIS", {
+    return blue(figlet.textSync("TETRIS", {
         font: 'ANSI Shadow',
         horizontalLayout: 'default',
         verticalLayout: 'default'
-    }));*/
+    }));
 }
 
 
@@ -366,13 +366,13 @@ async function jugar() {
 const server = net.createServer(async (socket) => {
     console.log('Cliente conectado desde: ' + socket.remoteAddress + ':' + socket.remotePort);
 
-    /*const interval = setInterval(async () => {
+    const interval = setInterval(async () => {
         const frame = await jugar();
         socket.write('\033[2J\033[3J\033[H');
         for (let index = 0; index < frame.length; index++) {
             socket.write(frame[index]);
         }
-    }, 500);*/
+    }, 500);
 
     socket.write("PRUEBA");
     socket.on('data', (data) => {
@@ -423,10 +423,10 @@ const port = process.env.PORT || 4000;
 server.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
-
+*/
 const express = require('express');
 const app = express();
 app.get('/', (req, res) => res.send('Home Page Route'));
 const portExpress = 3000;
-app.listen(poportExpressrt, () => console.log(`Server running on ${portExpress}, http://localhost:${portExpress}`));
+app.listen(portExpress, () => console.log(`Server running on ${portExpress}, http://localhost:${portExpress}`));
 
