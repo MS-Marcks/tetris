@@ -1,4 +1,4 @@
-const figlet = require("figlet");
+//const figlet = require("figlet");
 const net = require('net');
 require("./core/colors");
 
@@ -254,11 +254,11 @@ function ObtenerPuntos() {
 }
 
 function cabezera() {
-    return blue(figlet.textSync("TETRIS", {
+    return ""; /*blue(figlet.textSync("TETRIS", {
         font: 'ANSI Shadow',
         horizontalLayout: 'default',
         verticalLayout: 'default'
-    }));
+    }));*/
 }
 
 
