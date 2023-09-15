@@ -407,7 +407,8 @@ const server = net.createServer(async (socket) => {
 
     // Manejar eventos de cierre de conexión
     socket.on('close', () => {
-        console.log('Cliente desconectado');
+        console.log(process.env.PORT);
+        //console.log('Cliente desconectado');
     });
 
     socket.on('error', (err) => {
