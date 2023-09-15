@@ -1,6 +1,6 @@
 const figlet = require("figlet");
 const net = require('net');
-require("./core/colors");
+require("../core/colors");
 
 const vacio = "⬜";
 const relleno = "🔳";
