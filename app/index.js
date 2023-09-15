@@ -1,4 +1,4 @@
-/*//const figlet = require("figlet");
+const figlet = require("figlet");
 const net = require('net');
 require("./core/colors");
 
@@ -418,15 +418,13 @@ const server = net.createServer(async (socket) => {
     });
 });
 
-const port = process.env.PORT || 4000;
-
-server.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
+server.listen(3000, () => {
+    console.log(`Servidor escuchando en el puerto ${3000}`);
 });
-*/
-const express = require('express');
+
+/*const express = require('express');
 const app = express();
-app.get('/', (req, res) => res.send('Home Page Route'));
-const portExpress = 3000;
-app.listen(portExpress, () => console.log(`Server running on ${portExpress}, http://localhost:${portExpress}`));
+app.get('/', (req, res) => res.send('tetris ms'));
+const port = process.env.PORT || 4000;
+app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));*/
 
