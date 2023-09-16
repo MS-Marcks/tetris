@@ -364,15 +364,16 @@ async function jugar() {
 }
 
 const server = net.createServer(async (socket) => {
+
     console.log('Cliente conectado desde: ' + socket.remoteAddress + ':' + socket.remotePort);
 
-    const interval = setInterval(async () => {
+    /*const interval = setInterval(async () => {
         const frame = await jugar();
         socket.write('\033[2J\033[3J\033[H');
         for (let index = 0; index < frame.length; index++) {
             socket.write(frame[index]);
         }
-    }, 500);
+    }, 500);*/
 
     socket.write("PRUEBA");
     socket.on('data', (data) => {
@@ -397,7 +398,7 @@ const server = net.createServer(async (socket) => {
                 break;
             case 'x':
                 socket.write('Seleccionaste la opción 3: Salir\n');
-                clearInterval(interval)
+                //clearInterval(interval)
                 socket.end('Desconectado\n');
                 break;
             default:
@@ -418,8 +419,10 @@ const server = net.createServer(async (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log(`Servidor escuchando en el puerto ${3000}`);
+const port = process.env.PORT ?? 3000;
+
+server.listen(port, () => {
+    console.log(`Servidor escuchando en el puerto ${port}`);
 });
 
 /*const express = require('express');
