@@ -363,17 +363,17 @@ async function jugar() {
     return dibujarPantalla();
 }
 
-const server = net.createServer(async (socket) => {
+/*const server = net.createServer(async (socket) => {
 
     console.log('Cliente conectado desde: ' + socket.remoteAddress + ':' + socket.remotePort);
 
-    /*const interval = setInterval(async () => {
+    const interval = setInterval(async () => {
         const frame = await jugar();
         socket.write('\033[2J\033[3J\033[H');
         for (let index = 0; index < frame.length; index++) {
             socket.write(frame[index]);
         }
-    }, 500);*/
+    }, 500);
 
     socket.write("PRUEBA");
     socket.on('data', (data) => {
@@ -423,7 +423,7 @@ const port = process.env.PORT ?? 3000;
 
 server.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
-});
+});*/
 
 /*const express = require('express');
 const app = express();
@@ -431,3 +431,77 @@ app.get('/', (req, res) => res.send('tetris ms'));
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));*/
 
+
+
+//const express = require('express');
+const telnet = require('telnet');
+//const app = express();
+
+
+/*app.get('/', (req, res) => {
+  res.send('Servidor Telnet con Express.js');
+});*/
+
+const server = telnet.createServer((client) => {
+    /*console.log(client)
+    console.log('Cliente conectado desde: ' + client + ':' + client.remotePort);*
+
+    /*client.write('PRUEBA\n');*/
+
+    const interval = setInterval(async () => {
+        const frame = await jugar();
+        client.write('\033[2J\033[3J\033[H');
+        for (let index = 0; index < frame.length; index++) {
+            client.write(frame[index]);
+        }
+    }, 500);
+
+    client.on('data', (data) => {
+        const choice = data.toString().trim();
+        switch (choice) {
+            case 'a':
+                if ((figura.desplazimiento.punto1.x) > 0) {
+                    figura.desplazimiento.punto1.x -= 1
+                    figura.desplazimiento.punto2.x -= 1
+                }
+                break;
+            case 'd':
+                if ((figura.desplazimiento.punto2.x) < (TotaldeColumas)) {
+                    figura.desplazimiento.punto1.x += 1
+                    figura.desplazimiento.punto2.x += 1
+                }
+                break;
+            case "q":
+                if (!entoncesRotar) {
+                    entoncesRotar = true;
+                }
+                break;
+            case 'x':
+                client.write('Seleccionaste la opción 3: Salir\n');
+                //clearInterval(interval)
+                client.end();
+                break;
+            default:
+                //socket.write('Opción no válida\n');
+                break;
+        }
+    });
+
+    // Manejar eventos de cierre de conexión
+    client.on('end', () => {
+        console.log('Cliente desconectado');
+    });
+
+    client.on('error', (err) => {
+        console.error('Error de conexión:', err);
+    });
+});
+const port = process.env.PORT ?? 3000;
+
+server.listen(port, () => {
+    console.log('Servidor Telnet escuchando en el puerto ' + port);
+});
+
+/*app.listen(3000, () => {
+  console.log('Servidor Express escuchando en el puerto 3000');
+});*/
