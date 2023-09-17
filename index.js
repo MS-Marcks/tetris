@@ -19,6 +19,16 @@ const server = net.createServer((socket) => {
     socket.on('end', () => {
         console.log('Cliente desconectado');
     });
+    // Manejar eventos de cierre de conexión
+    socket.on('close', () => {
+        //console.log(process.env.PORT);
+        console.log('Cliente desconectado');
+    });
+
+    socket.on('error', (err) => {
+        //console.log(process.env.PORT);
+        console.error('Error de conexión:', err);
+    });
 });
 
 const port = process.env.PORT ?? 3000;
