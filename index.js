@@ -6,7 +6,7 @@ const server = net.createServer((socket) => {
     socket.write('¡Bienvenido al servidor de texto!\r\n');
     socket.write('Escribe "exit" para salir.\r\n\r\n');
 
-    socket.on('data', (data) => {
+    /*socket.on('data', (data) => {
         const command = data.toString().trim().toLowerCase();
 
         if (command === 'exit') {
@@ -14,7 +14,7 @@ const server = net.createServer((socket) => {
         } else {
             socket.write(`Escribiste: "${data.toString()}"\r\n`);
         }
-    });
+    });*/
 
     socket.on('end', () => {
         console.log('Cliente desconectado');
