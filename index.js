@@ -22,7 +22,7 @@ const server = net.createServer((socket) => {
     });*/
 
     socket.on('end', () => {
-        console.log('Cliente desconectado');
+        console.log('Conexión cerrada por el servidor');
     });
     // Manejar eventos de cierre de conexión
     socket.on('close', () => {
