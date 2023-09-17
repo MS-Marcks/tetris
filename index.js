@@ -3,8 +3,13 @@ const net = require('net');
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
-    socket.write('¡Bienvenido al servidor de texto!\r\n');
-    socket.write('Escribe "exit" para salir.\r\n\r\n');
+    if (socket.writable) {
+        socket.write('¡Bienvenido al servidor de texto!\r\n');
+        socket.write('Escribe "exit" para salir.\r\n\r\n');
+    } else {
+        console.log('El socket no está disponible para escritura.');
+    }
+
 
     /*socket.on('data', (data) => {
         const command = data.toString().trim().toLowerCase();
