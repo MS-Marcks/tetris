@@ -437,15 +437,13 @@ app.listen(port, () => console.log(`Server running on ${port}, http://localhost:
 const telnet = require('telnet');
 //const app = express();
 
-
 /*app.get('/', (req, res) => {
   res.send('Servidor Telnet con Express.js');
 });*/
 
 const server = telnet.createServer((client) => {
-    /*console.log(client)
-    console.log('Cliente conectado desde: ' + client + ':' + client.remotePort);*
-
+    /*console.log(client)*/
+    console.log('Cliente conectado desde: ' + client.remotePort);
     /*client.write('PRUEBA\n');*/
 
     const interval = setInterval(async () => {
@@ -496,12 +494,12 @@ const server = telnet.createServer((client) => {
         console.error('Error de conexión:', err);
     });
 });
-const port = process.env.PORT ?? 3000;
+const port = process.env.PORT ?? 80;
 
 server.listen(port, () => {
     console.log('Servidor Telnet escuchando en el puerto ' + port);
 });
 
-/*app.listen(3000, () => {
+/*app.listen(port, () => {
   console.log('Servidor Express escuchando en el puerto 3000');
 });*/
